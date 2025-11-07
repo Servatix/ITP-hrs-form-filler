@@ -7,7 +7,7 @@
   data = data.slice(0, 7).map(r => r.split('\t').slice(0, 6))
 
   // get form cells
-  const bounds = [225, 290, 355, 420, 475, 530, 595], cells = Array(8).fill().map(_=>[]),
+  const bounds = [260, 305, 350, 395, 440, 485, 530], cells = Array(8).fill().map(_=>[]),
     iwindow = document.getElementById('documentframe').contentWindow
     iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)')
     .forEach((e, i) => {
