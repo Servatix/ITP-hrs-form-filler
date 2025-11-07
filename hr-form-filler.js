@@ -6,13 +6,30 @@
   if (data.length === 0) return
   data = data.slice(0, 7).map(r => r.split('\t').slice(0, 6))
 
+  const date = new Date, month = date.getMonth()
+  const flipDate = (() => {
+    let y1 = 0, y2 = 0
+    for (const row of data) {
+      // extract day/month digits
+      const [x1, x2] = row[0].split('/').map(x => Number(x))
+      // if any digit > month, that must be a day
+      if (Math.max(x1, x2) > month)
+        return x2 > x1
+      // accumulate totals by position
+      y1 += x1
+      y2 += x2
+    }
+    // if all digits <= month, assume position with higher total is month
+    return y1 > y2
+  })()
+
   // get form cells
   const bounds = [260, 305, 350, 395, 440, 485, 530], cells = Array(8).fill().map(_=>[]),
     iwindow = document.getElementById('documentframe').contentWindow
-    iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)')
-    .forEach((e, i) => {
+  iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)').forEach(
+    (e, i) => {
       if (i === 0) {
-        // Auto fill month
+        // auto fill month
         const date = new Date, month = date.getMonth()
         e.value = `01/${(month ? month.toString().padStart(2, 0) : '12')}/${date.getFullYear()}`
       } else {
@@ -30,7 +47,8 @@
 
       if (j === 0) {
         // date
-        el.value = field.replace(/\b(\d)\b/g, '0$1').replace(/(\d+)\/(\d+)/, '$2/$1')
+        const date = field.replace(/\b(\d)\b/g, '0$1')
+        el.value = flipDate ? date.replace(/(\d+)\/(\d+)/, '$2/$1') : date
       } else if (j < 3) {
         // hour start/end
         el.value = field.replace(/0*(\d+):00/, '$1')
