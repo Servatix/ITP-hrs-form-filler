@@ -52,7 +52,11 @@
       } else if (j < 3) {
         // hour start/end
         el.value = field.replace(/0*(\d+):00/, '$1')
+      } else if (j < 5) {
+        // qty 50%/100%
+        el.value = field || '0'
       } else {
+        // description
         el.value = field
       }
       // update value
