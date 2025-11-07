@@ -4,6 +4,7 @@ A JavaScript utility script that automates the process of filling HR time tracki
 
 ## Table of Contents
 
+- [Script](hr-form-filler.js)
 - [Features](#features)
 - [Usage](#usage)
 - [Data Format Requirements](#data-format-requirements)
