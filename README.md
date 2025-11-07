@@ -39,14 +39,14 @@ A JavaScript utility script that automates the process of filling HR time tracki
 Your input data should be organized in columns and separated by tabs:
 ```
 Date    Start Time    End Time    50% OT    100% OT    Description
-11/06/2025   18:00        20:00       2         0          Project meeting
+07/11/2025   18:00        20:00       2         0          Project meeting
 ```
-\* Date in format mm/dd/yyyy
 
 ## Technical Details
 
 - The script works with form inputs in an iframe context
 - Automatically handles form field positioning and organization
+- Tries to detect and adapt to different date formats
 - Manages internal form state updates
 - Performs automatic data formatting and validation
 
@@ -54,5 +54,5 @@ Date    Start Time    End Time    50% OT    100% OT    Description
 
 - Maximum of 7 entries per form
 - Requires data to be in tab-separated format
-- Date must be in mm/dd/yyyy format
+- Date must be in dd/mm/yyyy or mm/dd/yyyy format
 - Times should be in hh:00 format
