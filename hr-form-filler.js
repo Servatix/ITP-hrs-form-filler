@@ -1,3 +1,6 @@
+// Usage: Copy and paste this script into the browser console on the PeopleHub OT form page
+
+// Auto-executing function
 (() => {
   // get and parse data
   let data = prompt('Pegar solo las columnas\nFecha, Hora inicio, Fin, Cant 50%, 100% y Descripción')
