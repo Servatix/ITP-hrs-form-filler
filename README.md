@@ -2,6 +2,14 @@
 
 A JavaScript utility script that automates the process of filling HR time tracking forms. This tool helps streamline the data entry process for recording overtime and task descriptions.
 
+## Table of Contents
+
+- [Features](#features)
+- [Usage](#usage)
+- [Data Format Requirements](#data-format-requirements)
+- [Technical Details](#technical-details)
+- [Limitations](#limitations)
+
 ## Features
 
 - Automatically fills form fields from tabulated data (excel/tsv)
