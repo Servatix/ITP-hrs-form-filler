@@ -16,7 +16,7 @@ A JavaScript utility script that automates the process of filling HR time tracki
 
 1. Open your browser's developer tools console (usually F12 key)
 
-2. Copy the entire contents of `hr-form-filler.js` and paste it into the browser console
+2. Copy the entire contents of [`hr-form-filler.js`](hr-form-filler.js) and paste it into the browser console
 
 3. Copy your data in tab-separated format with the following columns:
    - Date
