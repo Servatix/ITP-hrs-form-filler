@@ -24,7 +24,7 @@
   })()
 
   // get form cells
-  const bounds = [260, 305, 350, 395, 440, 485, 530], cells = Array(8).fill().map(_=>[]),
+  const bounds = [260, 305, 350, 395, 440, 485, 530], cells = Array(7).fill().map(_=>[]),
     iwindow = document.getElementById('documentframe').contentWindow
   iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)').forEach(
     (e, i) => {
@@ -46,8 +46,8 @@
       const el = cells[i][j]
 
       if (j === 0) {
-        // date
-        const date = field.replace(/\b(\d)\b/g, '0$1')
+        // date - normalize format
+        const date = field.replace(/\b(\d)\b/g, '0$1').replace(/\b(\d\d)$/g, '20$1')
         el.value = flipDate ? date.replace(/(\d+)\/(\d+)/, '$2/$1') : date
       } else if (j < 3) {
         // hour start/end
