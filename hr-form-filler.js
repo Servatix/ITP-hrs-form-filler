@@ -27,8 +27,12 @@
   })()
 
   // get form cells
-  const bounds = [260, 305, 350, 395, 440, 485, 530], cells = Array(7).fill().map(_=>[]),
-    iwindow = document.getElementById('documentframe').contentWindow
+  const iwindow = document.getElementById('documentframe').contentWindow
+  // get description fields to determine rows because they are the largest
+  const descFields = Array.from(iwindow.document.querySelectorAll('.eform-content textarea')).sort((a, b) => a.offsetTop - b.offsetTop)
+  // use description fields offsets to group other fields in rows
+  const bounds = descFields.map(e => e.offsetTop), cells = descFields.map(_=>[_])
+
   iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)').forEach(
     (e, i) => {
       if (i === 0) {
@@ -36,7 +40,7 @@
         const date = new Date, month = date.getMonth()
         e.value = `01/${(month ? month.toString().padStart(2, 0) : '12')}/${date.getFullYear()}`
       } else {
-        cells[bounds.findLastIndex(y => e.offsetTop > y)].push(e)
+        cells[bounds.findLastIndex(y => e.offsetTop >= y)].push(e)
       }
     }
   )
