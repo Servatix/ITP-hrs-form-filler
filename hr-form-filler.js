@@ -33,7 +33,7 @@
   // use description fields offsets to group other fields in rows
   const bounds = descFields.map(e => e.offsetTop), cells = descFields.map(_=>[_])
 
-  iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable)').forEach(
+  iwindow.document.querySelectorAll('.eform-content input:not(.formHidden,.autocompletable):not(:nth-child(8n-5)):not(:nth-child(8n-6))').forEach(
     (e, i) => {
       if (i === 0) {
         // auto fill month
